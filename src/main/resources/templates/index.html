@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Systeme du Management d'Employés</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+
+<div align="center" class="container my-2">
+	<h1>liste d'Employé</h1>
+	<a th:href="@{/showNewEmployeeForm}" class="btn btn-primary btn-sm mb-3">Ajouter un Employé</a>
+	
+	<table border="1" class ="table table-stripeed table-responsive-md">
+            <thead>
+                <tr>
+                    <th>Nom du l'Employé</th>
+                    <th>Prenom du l'Employé</th>
+                    <th>email du l'Employé</th>   
+                    <th>Actions</th>   
+                </tr>
+            </thead> 
+            <tbody>
+              <tr th:each="employee : ${listeEmploye}">
+			<td th:text="${employee.Nom}"></td>
+			<td th:text="${employee.Prenom}"></td>
+			<td th:text="${employee.email}"></td>
+			<td><a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">mise a jour</a></td>
+			</tr>
+            </tbody>
+     </table>
+	</div>
+</body>
+</html>
